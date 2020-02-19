@@ -3,7 +3,12 @@ pipeline {
     stages {
         stage('GradleBuild') {
             steps {
-                sh './gradlew build'
+                sh './gradlew build --no-daemon'
+            }
+        }
+        stage('GradleTest') {
+            steps {
+                sh './gradlew clean test --no-daemon'
             }
         }
     }
